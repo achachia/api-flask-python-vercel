@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import numpy as np
 
 app = Flask(__name__)
@@ -8,9 +8,17 @@ app = Flask(__name__)
 def hello():
     return 'Hello, world'
 
+@app.route('/json')
+def json():
+    dictionnaire = {
+        'type': 'Prévision de température',
+        'valeurs': [24, 24, 25, 26, 27, 28],
+        'unite': "degrés Celcius"
+    }
+    return jsonify(dictionnaire)
 
-@app.route('/test')
-def test():
+@app.route('/numpy')
+def numpy():
     return str(np.random.choice([1, 2, 3, 4, 5, 6]))
 
 @app.route('/result')

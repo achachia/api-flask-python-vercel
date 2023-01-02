@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import numpy as np
 
 app = Flask(__name__)
 
@@ -10,7 +11,7 @@ def hello():
 
 @app.route('/test')
 def test():
-    return 'Test'
+    return str(np.random.choice([1, 2, 3, 4, 5, 6]))
 
 @app.route('/result')
 def result():

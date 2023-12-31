@@ -1,5 +1,9 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify,Response
 import numpy as np
+import pandas as pd
+import yfinance as yf
+import pandas_ta as ta
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -25,3 +29,13 @@ def numpy():
 def result():
    dict = {'phy':50,'che':60,'maths':70}
    return render_template('result.html', result = dict)
+
+@app.route('/data')
+def data():
+    # Define the stock symbol and timeframe
+    symbol = 'ICP-USD'
+    end_date = datetime.today()
+    start_date = end_date - timedelta(days=120)  # 4 months   
+    stock_data = yf.download(symbol, start=start_date,end=end_date)
+    #print(stock_data)
+    return Response(stock_data.to_json(orient="records"), mimetype='application/json')

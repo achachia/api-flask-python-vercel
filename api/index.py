@@ -43,7 +43,7 @@ def data():
     return Response(stock_data.to_json(orient="records"), mimetype='application/json')
 
 
-@app.route('/data_onchaine')
+@app.route('/data_onchain')
 def dataOnchain():
     url = "https://www.oklink.com/api/v5/explorer/blockchain/summary?chainShortName=ETH"
     payload = ""
@@ -52,5 +52,5 @@ def dataOnchain():
         'Ok-Access-Key': 'fa318372-3362-4e1b-82ef-63dc2ad468c6'
     }
     response = requests.request("GET", url, headers=headers, data=payload)
-    return Response(response.text.to_json(orient="records"), mimetype='application/json')
+    return Response(response.to_json(orient="records"), mimetype='application/json')
    

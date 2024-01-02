@@ -52,5 +52,6 @@ def dataOnchain():
         'Ok-Access-Key': 'fa318372-3362-4e1b-82ef-63dc2ad468c6'
     }
     data = requests.request("GET", url, headers=headers, data=payload)
-    return Response(data.to_json(orient="records"), mimetype='application/json')
+    response_json = data.json()
+    return response_json
    

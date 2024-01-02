@@ -53,5 +53,5 @@ def dataOnchain():
     }
     data = requests.request("GET", url, headers=headers, data=payload)
     print(data.text)
-    return Response(data.to_json(orient="records"), mimetype='application/json')
+    return jsonify(data.text)
    

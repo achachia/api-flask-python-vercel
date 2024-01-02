@@ -4,6 +4,8 @@ import pandas as pd
 import yfinance as yf
 import pandas_ta as ta
 from datetime import datetime, timedelta
+import requests
+
 
 app = Flask(__name__)
 

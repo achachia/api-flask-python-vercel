@@ -30,7 +30,7 @@ def result():
    dict = {'phy':50,'che':60,'maths':70}
    return render_template('result.html', result = dict)
 
-@app.route('/data')
+@app.route('/data_yfinance')
 def data():
     # Define the stock symbol and timeframe
     symbol = 'ICP-USD'
@@ -39,3 +39,16 @@ def data():
     stock_data = yf.download(symbol, start=start_date,end=end_date)
     #print(stock_data)
     return Response(stock_data.to_json(orient="records"), mimetype='application/json')
+
+
+@app.route('/data_onchaine')
+def dataOnchain():
+    url = "https://www.oklink.com/api/v5/explorer/blockchain/summary?chainShortName=ETH"
+    payload = ""
+    headers = {
+        # apiKey
+        'Ok-Access-Key': 'fa318372-3362-4e1b-82ef-63dc2ad468c6'
+    }
+    response = requests.request("GET", url, headers=headers, data=payload)
+    return Response(response.to_json(orient="records"), mimetype='application/json')
+   

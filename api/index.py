@@ -49,18 +49,18 @@ def dataOnchain():
     # GET /api/v5/explorer/blockchain/info?chainShortName=btc
     #  https://api-flask-python-vercel.vercel.app/data_onchain?sectionApi=blockchain&typeApi=summary   --->  /api/v5/explorer/blockchain/summary
     #  https://api-flask-python-vercel.vercel.app/data_onchain?sectionApi=blockchain&typeApi=info&chainShortName=btc  -->  /api/v5/explorer/blockchain/info?chainShortName=btc
-    url = "https://www.oklink.com/api/v5/explorer/'
+    url = "https://www.oklink.com/api/v5/explorer/"
     _sectionApi  = request.args.get('sectionApi') # exemple blockchain
     _typeApi  = request.args.get('typeApi') # exemple info
-    url +=  _sectionApi + '/'+ _typeApi
+    url +=  _sectionApi + "/"+ _typeApi
     compteur = 0
     _chainShortName  = request.args.get('chainShortName')
     if _chainShortName is not None:
       compteur = compteur +1
       if compteur > 0 :  
-         url +=  '&chainShortName=" + _chainShortName
+         url +=  "&chainShortName=" + _chainShortName
       else :    
-         url +=  '?chainShortName=" + _chainShortName
+         url +=  "?chainShortName=" + _chainShortName
 
     
     payload = ""

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify,Response
+from flask import Flask, render_template, jsonify,Response, request
 import numpy as np
 import pandas as pd
 import yfinance as yf
@@ -6,6 +6,7 @@ import pandas_ta as ta
 from datetime import datetime, timedelta
 import requests
 
+key_api_oklink = 'fa318372-3362-4e1b-82ef-63dc2ad468c6'
 
 app = Flask(__name__)
 
@@ -45,11 +46,12 @@ def data():
 
 @app.route('/data_onchain')
 def dataOnchain():
-    url = "https://www.oklink.com/api/v5/explorer/blockchain/summary?chainShortName=ETH"
+    _chainShortName  = request.args.get('chainShortName')
+    url = "https://www.oklink.com/api/v5/explorer/blockchain/summary?chainShortName=" + _chainShortName
     payload = ""
     headers = {
         # apiKey
-        'Ok-Access-Key': 'fa318372-3362-4e1b-82ef-63dc2ad468c6'
+        'Ok-Access-Key': key_api_oklink
     }
     data = requests.request("GET", url, headers=headers, data=payload)
     response_json = data.json()

@@ -44,11 +44,11 @@ def data():
     return Response(stock_data.to_json(orient="records"), mimetype='application/json')
 
 
-@app.route('/data_onchain')
+@app.route('/data_onchain_oklink')
 def dataOnchain():
     # GET /api/v5/explorer/blockchain/info?chainShortName=btc
-    #  https://api-flask-python-vercel.vercel.app/data_onchain?sectionApi=blockchain&typeApi=summary   --->  /api/v5/explorer/blockchain/summary
-    #  https://api-flask-python-vercel.vercel.app/data_onchain?sectionApi=blockchain&typeApi=info&chainShortName=btc  -->  /api/v5/explorer/blockchain/info?chainShortName=btc
+    #  https://api-flask-python-vercel.vercel.app/data_onchain_oklink?sectionApi=blockchain&typeApi=summary   --->  /api/v5/explorer/blockchain/summary
+    #  https://api-flask-python-vercel.vercel.app/data_onchain_oklink?sectionApi=blockchain&typeApi=info&chainShortName=btc  -->  /api/v5/explorer/blockchain/info?chainShortName=btc
     url = "https://www.oklink.com/api/v5/explorer/"
     _sectionApi  = request.args.get('sectionApi') # exemple blockchain
     _typeApi  = request.args.get('typeApi') # exemple info

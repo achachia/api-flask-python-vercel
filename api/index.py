@@ -47,6 +47,8 @@ def data():
 @app.route('/data_onchain')
 def dataOnchain():
     # GET /api/v5/explorer/blockchain/info?chainShortName=btc
+    #  https://api-flask-python-vercel.vercel.app/data_onchain?sectionApi=blockchain&typeApi=summary   --->  /api/v5/explorer/blockchain/summary
+    #  https://api-flask-python-vercel.vercel.app/data_onchain?sectionApi=blockchain&typeApi=info&chainShortName=btc  -->  /api/v5/explorer/blockchain/info?chainShortName=btc
     url = "https://www.oklink.com/api/v5/explorer/'
     _sectionApi  = request.args.get('sectionApi') # exemple blockchain
     _typeApi  = request.args.get('typeApi') # exemple info

@@ -57,7 +57,7 @@ def dataOnchain():
     _chainShortName  = request.args.get('chainShortName')
     if _chainShortName is not None:
       compteur = compteur +1
-      if compteur > 0 :  
+      if compteur > 1 :  
          url +=  "&chainShortName=" + _chainShortName
       else :    
          url +=  "?chainShortName=" + _chainShortName

@@ -46,8 +46,11 @@ def data():
 
 @app.route('/data_onchain')
 def dataOnchain():
+    # GET /api/v5/explorer/blockchain/info?chainShortName=btc
+    _sectionApi  = request.args.get('sectionApi') # exemple blockchain
+    _typeApi  = request.args.get('typeApi') # exemple info
     _chainShortName  = request.args.get('chainShortName')
-    url = "https://www.oklink.com/api/v5/explorer/blockchain/summary?chainShortName=" + _chainShortName
+    url = "https://www.oklink.com/api/v5/explorer/' + _sectionApi + '/'+ _typeApi + '?chainShortName=" + _chainShortName
     payload = ""
     headers = {
         # apiKey
